@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 )
 
 func findMax(a []int) int {
@@ -55,7 +56,9 @@ func squaredArray(numArr []int) []int {
 	for i := range numArr {
 		numArr[i] = numArr[i] * numArr[i]
 	}
+	sort.Ints(numArr)
 	return numArr
+
 }
 
 func main() {
@@ -73,6 +76,6 @@ func main() {
 	fmt.Println("total even numbers", evenCounter)
 
 	//q3
-	var numbers1 []int = []int{1, 1, 1, 2, 3, 4, 4, 4, 5, 6}
+	var numbers1 []int = []int{-4, -3, -1, 2, 3, 4, 4, 4, 5, 6}
 	fmt.Println("squared sequence", squaredArray(numbers1))
 }
