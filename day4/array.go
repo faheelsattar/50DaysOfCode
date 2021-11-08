@@ -25,23 +25,21 @@ func thirdMax(array []int) int {
 	return array[len(array)-1]
 }
 
-func disappearedArray(array []int) {
+func disappearedArray(array []int) []int {
 	sort.Ints(array)
-	var hlder int = 0
+	fmt.Println("arr", array)
+	var answer []int
 	for i := 0; i < len(array); i++ {
-		if i+1 < len(array) {
-			if array[i] == array[i+1] || array[i]+1 == array[i+1] {
-
-			} else {
-				hlder = array[i] + 1
-				fmt.Println(array[i] + 1)
-			}
-
-			if hlder+1 != array[i]+1 {
-
+		if i+1 < len(array) && i > 0 {
+			if array[i] != array[i+1] && array[i]+1 != array[i+1] {
+				fmt.Println("first if", i, array[i]+1)
+				answer = append(answer, array[i]+1)
+			} else if array[i] != array[i-1] && array[i]-1 != array[i-1] {
+				answer = append(answer, array[i]-1)
 			}
 		}
 	}
+	return answer
 }
 
 func main() {
@@ -51,5 +49,5 @@ func main() {
 	nums := []int{2, 2, 3, 1}
 	fmt.Println("third max", thirdMax(nums))
 	numArr := []int{4, 3, 2, 7, 8, 2, 3, 1}
-	disappearedArray(numArr)
+	fmt.Println("disappeard array", disappearedArray(numArr))
 }
